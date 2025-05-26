@@ -1,0 +1,48 @@
+{
+  "name": "publix",
+  "remoteUser": "devuser",
+  "workspaceFolder": "/workspaces/publix",
+  "dockerComposeFile": "../docker-compose.yml",
+  "postCreateCommand": "echo remember to bun install",
+  "shutdownAction": "stopCompose",
+  "service": "publix-base",
+
+  // Forward ports from the container to the host machine.
+  "forwardPorts": [
+    3000,
+    3005,
+    5173
+  ],
+
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "editor.formatOnSave": true,
+        "[typescript]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[typescriptreact]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[javascript]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[json]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[jsonc]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        }
+      },
+      "extensions": [
+        "oven.bun-vscode",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss",
+        "ms-azuretools.vscode-docker",
+        "eamodio.gitlens"
+      ]
+    }
+  }
+}

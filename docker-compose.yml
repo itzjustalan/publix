@@ -1,0 +1,40 @@
+services:
+  publix-base:
+    container_name: publix-base
+    build:
+      context: .
+      dockerfile: .devcontainer/Dockerfile
+    volumes:
+      - .:/workspaces/publix
+    ports:
+      - "3000:3000"
+      - "5173:5173"
+    depends_on:
+      - publix-db
+    networks:
+      - publix-net
+
+  publix-db:
+    container_name: publix-db
+    restart: unless-stopped
+    image: surrealdb/surrealdb:latest
+    command: >
+      start
+      --user root
+      --pass root
+      --log debug
+      rocksdb:/publix-data/publix-database.db
+    ports:
+      - "3005:8000"
+    networks:
+      - publix-net
+    volumes:
+      - ./publix-data:/publix-data
+
+networks:
+  publix-net:
+    driver: bridge
+    external: false
+
+volumes:
+  surreal_data:
