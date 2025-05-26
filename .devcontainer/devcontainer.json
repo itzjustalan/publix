@@ -3,7 +3,7 @@
   "remoteUser": "devuser",
   "workspaceFolder": "/workspaces/publix",
   "dockerComposeFile": "../docker-compose.yml",
-  "postCreateCommand": "echo remember to bun install",
+  "postCreateCommand": "#cd publix-api && bun install && bun run dev",
   "shutdownAction": "stopCompose",
   "service": "publix-base",
 
